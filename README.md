@@ -29,3 +29,5 @@ Creating new artwork computationally.
 Image-to-Image transition, such as sketch to photo, aerial photos to maps.
 
 Additionally, GAN has been used to model rudimentary patterns of motion in video by Facebook[2].
+
+### References
