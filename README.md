@@ -15,6 +15,10 @@ One of the biggest challenges people face when training GANs is balancing the ge
 
 As the name suggests, GAN framework involves two adversaries, one is the generator, which learns from the training data and creates new instances of objects similar to those in the training data. The other is the discriminator, which given a set of labeled data, trains a classifier to determine whether or not a sample comes from the original dataset. As Goodfellow mentioned in his tutorial, this is like a game between a police and a counterfeiter, where the counterfeiter tries to product counterfeits that are made by the original manufacturer(in our case, probability distributions), while the police tries to spot those counterfeits.
 
+The generator is defined as G that takes the latent variable z as an input and $G$ as it's parameters.
+
+Input Buffer: $\left[ q_\text{the}, q_\text{dog}, q_\text{ran}, q_\text{away}, q_\text{END-INPUT} \right]$
+
 ### Applications of generative modeling
 
 Several good applications for the usage of generative modeling were outlined in Goodfellow’s original guide. These include:
