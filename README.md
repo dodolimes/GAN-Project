@@ -1,7 +1,7 @@
 # GAN-Project
 
 
-Introduction
+### Introduction
 
 Generative adversarial model is an ingeniously designed unsupervised learning algorithm. It can be used to generate realistic images of high accuracy. The key ideas are to build two competing neural networks and have them take part in a zero-sum game using mini-max.
 
