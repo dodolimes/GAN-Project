@@ -1,37 +1,27 @@
 # GAN-Project
 
+This code is taken from https://github.com/jacobgil/keras-dcgan. I have modified the neural network structures in my version of the code.
+I have also added a get_dataset() function to pull data from Chars74K set. 
 
-### Introduction
+Requirements:
+Python 2 or 3
+Keras with Tensorflow or Theano backend
 
-Generative adversarial model is an ingeniously designed unsupervised learning algorithm. It can be used to generate realistic images of high accuracy. The key ideas are to build two competing neural networks and have them take part in a zero-sum game using mini-max.
+To run with Keras using the tensorflow backend, add "image_data_format": "channels_first" to $HOME/.keras/keras.json
 
-### Background 
+I have also added a new argument parser variable "--data". 
 
-Generative adversarial network model was originally published by Goodfellow et al in 2014. It has since become well know for its ability to generate realistic looking images.
+To train with MNIST data, run `python dcgan.py --mode train --batch_size <batch_size>`
 
-One of the biggest challenges people face when training GANs is balancing the generator and discriminator so that one can’t dominate another. This has limited GANs to getting compelling results only when training models using images from narrow domains, examples include Yu et al 2015 on bedroom scenes and Lie et al 2015 on human faces. Recently David Ward-Farley and Yoshua Bengio (2017) attempted image synthesis from datasets comprising a diverse set of categories, using a denoising auto-encoder to purpose high-level targets for the generator.
+To train with Chars74K data, run `python dcgan.py --mode train --batch_size <batch_size> --data other`
 
-### The GAN Framework 
+To generate images run
+`python dcgan.py --mode generate --batch_size <batch_size>`
+`python dcgan.py --mode generate --batch_size <batch_size> --nice` : top 5% images according to discriminator
 
-As the name suggests, GAN framework involves two adversaries, one is the generator, which learns from the training data and creates new instances of objects similar to those in the training data. The other is the discriminator, which given a set of labeled data, trains a classifier to determine whether or not a sample comes from the original dataset. As Goodfellow mentioned in his tutorial, this is like a game between a police and a counterfeiter, where the counterfeiter tries to product counterfeits that are made by the original manufacturer(in our case, probability distributions), while the police tries to spot those counterfeits.
+To repeat result in the file, run 
+`python dcgan.py --mode train --batch_size 128 --data` 
+`python dcgan.py --mode generate --batch_size 128 --nice` for MNIST images
 
-The generator is defined as G that takes the latent variable z as an input and $G$ as it's parameters.
-
-Input Buffer: $\left[ q_\text{the}, q_\text{dog}, q_\text{ran}, q_\text{away}, q_\text{END-INPUT} \right]$
-
-### Applications of generative modeling
-
-Several good applications for the usage of generative modeling were outlined in Goodfellow’s original guide. These include:
-
-Generative models can be used to test our ability to manipulate and represent high dimensional probability distributions, which are important in many areas of applied maths and engineering.
-
-Can be used in reinforcement learning.
-
-Upping the resolution of an image [1].
-
-Creating new artwork computationally.
-Image-to-Image transition, such as sketch to photo, aerial photos to maps.
-
-Additionally, GAN has been used to model rudimentary patterns of motion in video by Facebook[2].
-
-### References
+`python dcgan.py --mode train --batch_size <batch_size> --data other` 
+`python dcgan.py --mode generate --batch_size 128 --nice` for Chars74K images
